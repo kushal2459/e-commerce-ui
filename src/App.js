@@ -7,7 +7,12 @@ import ResetPassword from "./components/ResetPassword";
 import OTPVerification from "./components/OTPVerification";
 
 function App() {
+
+  
+
+  
   return (
+    <>
     <Router>
       <Routes>
         <Route path="/" Component={Home} />
@@ -18,6 +23,8 @@ function App() {
         <Route path="/reset-password" Component={ResetPassword}></Route>
       </Routes>
     </Router>
+    {/* <button onClick={ForgotPassword}>Home</button> */}
+    </>
   );
 }
 

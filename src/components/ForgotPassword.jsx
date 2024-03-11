@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from  'react-router-dom'
 import { useState } from "react";
 import img from "../img/thingslinker_logo.svg";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -19,11 +21,14 @@ const ForgotPassword = () => {
       alert("Success!");
     }
   };
+  const redirectToHomePage = () => {
+    navigate('/');
+  }
 
   return (
     <>
       <div className="sm:shadow-md sm:bg-gray-50 text-gray-600 rounded-lg px-10 py-10 mx-auto my-16 w-[460px]">
-        <img src={img} alt="logo" width={120} className="mx-auto mb-5" />
+      <img src={img} alt="logo" width={120} className="mx-auto mb-5 cursor-pointer" onClick={redirectToHomePage}/>
         <h1 className="text-[24px] font-semibold text-center">
           Forgot Password🔒
         </h1>

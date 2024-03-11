@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom'
 import img from "../img/thingslinker_logo.svg";
 import { useState } from "react";
 import facebook from "../img/icons8-facebook.svg";
@@ -9,6 +10,7 @@ import twitter from "../img/icons8-twitter.svg";
 const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -33,10 +35,14 @@ const LoginPage = () => {
     }
   };
 
+  const redirectToHomePage = () => {
+    navigate('/');
+  }
+
   return (
     <>
       <div className="sm:shadow-md sm:bg-gray-50 text-gray-600 rounded-lg px-10 py-10 my-16 mx-auto w-[460px] min-h-[500px]">
-        <img src={img} alt="logo" width={120} className="mx-auto mb-5" />
+        <img src={img} alt="logo" width={120} className="mx-auto mb-5 cursor-pointer" onClick={redirectToHomePage}/>
         <h1 className="text-[24px] font-semibold text-center">
           Welcome to Thingslinker!🙋‍♂️
         </h1>
@@ -67,7 +73,7 @@ const LoginPage = () => {
           <div className="flex items-center gap-2">
             <input type="checkbox" className="" /> <span>Remember Me</span>
           </div>
-          <a href="/" className="text-blue-500">
+          <a href="/forgot-password" className="text-blue-500">
             Forgot Password?
           </a>
         </div>
@@ -80,7 +86,7 @@ const LoginPage = () => {
         </button>
         <div className="flex justify-center gap-2 items-center pt-2 mt-5">
           <p>New to our platform?</p>
-          <a href="/" className="text-blue-500">
+          <a href="/sign-up" className="text-blue-500">
             Create an account
           </a>
         </div>

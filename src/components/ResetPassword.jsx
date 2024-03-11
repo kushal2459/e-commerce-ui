@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from  'react-router-dom'
 import { useState } from "react";
 import img from "../img/thingslinker_logo.svg";
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleNewPasswordChange = (e) => {
     setNewPassword(e.target.value);
@@ -16,7 +18,7 @@ const ResetPassword = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-if (newPassword === confirmPassword) {
+if (newPassword && confirmPassword && newPassword === confirmPassword) {
     console.log("New Password:", newPassword);
     console.log("Confirm Password:", confirmPassword);
     setNewPassword('');
@@ -27,10 +29,14 @@ if (newPassword === confirmPassword) {
   }
   };
 
+  const redirectToHomePage = () => {
+    navigate('/');
+  }
+
   return (
     <>
       <div className="sm:shadow-md sm:bg-gray-50 text-gray-600 rounded-lg px-10 py-10 mx-auto my-16 w-[460px]">
-        <img src={img} alt="logo" width={120} className="mx-auto mb-5" />
+      <img src={img} alt="logo" width={120} className="mx-auto mb-5 cursor-pointer" onClick={redirectToHomePage}/>
         <h1 className="text-[24px] font-semibold text-center">
           Reset Password🔒
         </h1>

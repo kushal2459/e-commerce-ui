@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from  'react-router-dom'
 import img from "../img/thingslinker_logo.svg";
 
 const TwoStepVerification = () => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
+  const navigate = useNavigate();
 
   const handleOtpChange = (index, value) => {
     const newOtp = [...otp];
@@ -35,10 +37,14 @@ const TwoStepVerification = () => {
     }
   };
 
+  const redirectToHomePage = () => {
+    navigate('/');
+  }
+
   return (
     <div className="h-screen">
       <div className="sm:shadow-md sm:bg-gray-50 text-gray-600 rounded-lg px-10 py-10 mx-auto my-16 w-[460px]">
-        <img src={img} alt="logo" width={120} className="mx-auto mb-5" />
+      <img src={img} alt="logo" width={120} className="mx-auto mb-5 cursor-pointer" onClick={redirectToHomePage}/>
         <h1 className="text-[24px] font-semibold text-center">
           Two-Step Verification🔐
         </h1>
