@@ -20,18 +20,37 @@ const LoginPage = () => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!email || !password) {
       alert("please enter a valid email or passsword");
       setPassword("");
       setEmail("");
     } else {
-      console.log("Email:", email);
-      console.log("Password:", password);
-      setPassword("");
-      setEmail("");
-      alert("success!");
+      try{
+        const response = await fetch('http://192.168.1.26:3100/Auth/Login', {
+          method : 'POST',
+          headers : {
+            'Content-Type' : 'application/json'
+          },
+          body: JSON.stringify({ email, password })
+        });
+
+        if (response.ok){
+          const data = await response.json();
+          //store user token
+          alert("Login successfull");
+          navigate('/');
+        }else{
+          const errorData = await response.json();
+          alert("Login failed: "+ errorData.message);
+          setPassword("");
+          setEmail("");
+        }
+      } catch(error){
+        console.error("Login failed:", error);
+        alert("An error occured while logging in");
+      }
     }
   };
 

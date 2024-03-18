@@ -25,28 +25,61 @@ const SignUpPage = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if(!username || !email || !password){
-      alert("Please enter required details!");
-      setEmail('');
-      setPassword('');
-      setUsername('');
-    }else{
-      setEmail('');
-      setPassword('');
-      setUsername('');
-      console.log("Username:", username);
-    console.log("Email:", email);
-    console.log("Password:", password);
-    alert("success!");
-    }
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if(!username || !email || !password){
+  //     alert("Please enter required details!");
+  //     setEmail('');
+  //     setPassword('');
+  //     setUsername('');
+  //   }else{
+  //     const isValidEmail = await validateEmail(email);
     
-  };
+  //     if(!isValidEmail){
+  //       alert("Please Enter a valid Email address");
+  //       return;
+  //     }
+
+  //     setEmail('');
+  //     setPassword('');
+  //     setUsername('');
+  //     console.log("Username:", username);
+  //   console.log("Email:", email);
+  //   console.log("Password:", password);
+  //   alert("success!");
+  //   }
+    
+  // };
 
   const redirectToHomePage = () => {
     navigate('/');
   }
+
+  const ValidateUser = async() =>{
+    try{
+      const response = await fetch("http://192.168.1.26:3100/Auth/SignUp", {
+        method: "POST",
+        headers: {
+          'Content-Type' : "application/json"
+        },
+        body: JSON.stringify({email}),
+      });
+      const data = await response.json();
+      return data.isValid;
+    }catch(error){
+      console.error("Error validating Email:", error);
+      return false;
+    }
+  }
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if(ValidateUser.success){
+      alert("valid user");
+    }else{
+      alert("not a valid user");
+    }
+  } 
 
   return (
     <>

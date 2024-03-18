@@ -5,12 +5,9 @@ import SignUpPage from "./components/SignUpPage";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
 import OTPVerification from "./components/OTPVerification";
+import Test from './pages/Test'
 
 function App() {
-
-  
-
-  
   return (
     <>
     <Router>
@@ -21,6 +18,7 @@ function App() {
         <Route path="/otp-verification" Component={OTPVerification} />
         <Route path="/forgot-password" Component={ForgotPassword}></Route>
         <Route path="/reset-password" Component={ResetPassword}></Route>
+        <Route path="/test" Component={Test} />
       </Routes>
     </Router>
     {/* <button onClick={ForgotPassword}>Home</button> */}
