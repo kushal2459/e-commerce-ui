@@ -10,14 +10,14 @@ import {
 const Navbar = () => {
   return (
     <>
-      <nav className="flex items-center justify-between px-10 py-4 bg-gray-100">
-        <div>
+      <nav className="flex flex-col md:flex-row items-center justify-between px-4 md:px-10 py-4 bg-gray-50 shadow-md">
+        <div className="flex items-center">
           <img src={logo} alt="thingslinkerLOGO" width={150} />
         </div>
-        <div className="flex gap-8 text-lg font-semibold">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-lg font-semibold">
           <a href="/">Home</a>
-          <a href="/">Product</a>
-          <a href="/">About us</a>
+          <a href="/products">Products</a>
+          <a href="/about">About us</a>
         </div>
         <div className="flex items-center gap-4 font-semibold text-lg">
           <FontAwesomeIcon icon={faUser} />
