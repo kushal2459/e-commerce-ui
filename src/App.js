@@ -5,23 +5,27 @@ import SignUpPage from "./components/SignUpPage";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
 import OTPVerification from "./components/OTPVerification";
-import Test from './pages/Test'
+import DetailedProduct from './pages/DetailedProduct'
+import Test from "./pages/Test";
+import NoPage from "./pages/NoPage";
 
 function App() {
   return (
     <>
-    <Router>
-      <Routes>
-        <Route path="/" Component={Home} />
-        <Route path="/login" Component={LoginPage} />
-        <Route path="/sign-up" Component={SignUpPage} />
-        <Route path="/otp-verification" Component={OTPVerification} />
-        <Route path="/forgot-password" Component={ForgotPassword}></Route>
-        <Route path="/reset-password" Component={ResetPassword}></Route>
-        <Route path="/test" Component={Test} />
-      </Routes>
-    </Router>
-    {/* <button onClick={ForgotPassword}>Home</button> */}
+      <Router>
+        <Routes>
+          <Route path="/" Component={Home} />
+          <Route path="/*" Component={NoPage} />
+          <Route path="/productinfo" Component={DetailedProduct} />
+          <Route path="/login" Component={LoginPage} />
+          <Route path="/sign-up" Component={SignUpPage} />
+          <Route path="/otp-verification" Component={OTPVerification} />
+          <Route path="/forgot-password" Component={ForgotPassword}></Route>
+          <Route path="/reset-password" Component={ResetPassword}></Route>
+          <Route path="/test" Component={Test} />
+        </Routes>
+      </Router>
+      {/* <button onClick={ForgotPassword}>Home</button> */}
     </>
   );
 }

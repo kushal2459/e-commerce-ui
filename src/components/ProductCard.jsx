@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
@@ -11,6 +12,7 @@ const ProductCard = ({
   image,
   rating,
 }) => {
+  const navigate = useNavigate();
   const [currentImage, setCurrentImage] = useState(0);
   const img = [
     "https://thingslinker.com/upload_images/thingslinker_tl01_esp8266/3.png",
@@ -41,6 +43,7 @@ const ProductCard = ({
           alt={`product_img${currentImage + 1}`}
           width={250}
           className="rounded-md shadow mt-2 mb-4"
+          onClick={() => navigate('/productinfo')}
         />
       </div>
       <div className="my-2 flex justify-between">

@@ -39,16 +39,16 @@ const FAQ = () => {
   };
 
   return (
-    <div className="container mx-auto">
-      <div className="flex gap-10 mt-8">
-        <div className="w-1/2">
+    <div className="container mx-auto sm:px-6 lg:px-8">
+      <div className="flex flex-col sm:flex-row gap-10 mt-8">
+        <div className="w-full sm:w-1/2 ">
           <h2 className="text-3xl font-semibold mb-4">
             Frequently Asked Questions
           </h2>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque dolorum placeat nulla veritatis reiciendis, omnis ipsam excepturi tempore ullam esse iusto facilis cupiditate, fugit nisi harum? Illum, officia unde. Nesciunt.</p>
           <button className="bg-blue-500 text-white rounded-md text-lg font-medium my-2 py-2 px-5">Ask a question</button>
         </div>
-        <div className="w-1/2">
+        <div className="w-full sm:w-1/2">
           {faqData.map((item) => (
             <div key={item.id} className="mb-4">
               <div className="flex items-center justify-between">

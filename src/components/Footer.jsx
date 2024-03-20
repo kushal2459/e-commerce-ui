@@ -1,9 +1,9 @@
 import React from "react";
 import logo from '../img/thingslinker_logo.svg'
-import facebook from '../img/icons8-facebook.svg'
-import twitter from '../img/icons8-twitter.svg'
-import github from '../img/icons8-github 1.svg'
-import instagram from '../img/icons8-instagram.svg'
+// import facebook from '../img/icons8-facebook.svg'
+// import twitter from '../img/icons8-twitter.svg'
+// import github from '../img/icons8-github 1.svg'
+// import instagram from '../img/icons8-instagram.svg'
 
 const Footer = () => {
 
@@ -49,7 +49,7 @@ const Footer = () => {
             className="object-contain"
           ></img>
           <p className="text-base text-gray-700">
-            Carhub 2023 <br />
+            Thingslinker 2024 <br />
             All rights reserved &copy;
           </p>
         </div>
@@ -74,7 +74,7 @@ const Footer = () => {
       </div>
 
       <div className="flex justify-between items-center flex-wrap mt-10 border-t border-gray-100 sm:px-16 px-6 py-10">
-        <p>@2024 CarHub. All Rights Reserved</p>
+        <p>@2024 Thingslinker. All Rights Reserved</p>
         <div className="flex-1 flex sm:justify-end justify-center max-sm:mt-4 gap-10">
           <a href="/" className="text-gray-500">
             Privacy Policy

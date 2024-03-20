@@ -1,17 +1,16 @@
 import React from "react";
-import Navbar from "../components/Navbar";
 import Tagline from "../components/Tagline";
 import ProductsPage from "../sections/ProductsPage";
 // import TestProductCard from "./Test";
-import About from "./About";
+import About from "../sections/About";
 import HeroSection from "../sections/Hero";
 import FAQ from "../sections/FAQ";
-import Footer from "../sections/Footer";
+import Layout from "../components/Layout";
 
 const Home = () => {
   return (
-    <div className="">
-      <Navbar />
+    <div id="home">
+    <Layout>
       <Tagline />
       <HeroSection />
       <div className="flex flex-col gap-20 mx-24 mb-24">
@@ -20,7 +19,7 @@ const Home = () => {
         {/* <TestProductCard /> */}
         <FAQ />
       </div>
-        <Footer />
+    </Layout>
     </div>
   );
 };
