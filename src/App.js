@@ -8,15 +8,20 @@ import OTPVerification from "./components/OTPVerification";
 import DetailedProduct from './pages/DetailedProduct'
 import Test from "./pages/Test";
 import NoPage from "./pages/NoPage";
+import ScrollTop from "./components/ScrollTop";
+import Cart from "./pages/Cart";
+import MyState from "./context/myState";
 
 function App() {
   return (
-    <>
+    <MyState>
       <Router>
+        <ScrollTop />
         <Routes>
           <Route path="/" Component={Home} />
           <Route path="/*" Component={NoPage} />
-          <Route path="/productinfo" Component={DetailedProduct} />
+          <Route path="/cart" Component={Cart} />
+          <Route path="/productinfo/:id" Component={DetailedProduct} />
           <Route path="/login" Component={LoginPage} />
           <Route path="/sign-up" Component={SignUpPage} />
           <Route path="/otp-verification" Component={OTPVerification} />
@@ -26,7 +31,7 @@ function App() {
         </Routes>
       </Router>
       {/* <button onClick={ForgotPassword}>Home</button> */}
-    </>
+    </MyState>
   );
 }
 

@@ -1,17 +1,31 @@
 import React from "react";
-import { useNavigate } from  'react-router-dom'
+import { Link, useNavigate } from  'react-router-dom'
 import img from "../img/thingslinker_logo.svg";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import facebook from "../img/icons8-facebook.svg";
 import github from "../img/icons8-github.svg";
 import google from "../img/icons8-google.svg";
 import twitter from "../img/icons8-twitter.svg";
 
+import myContext from "../context/myContext";
+import toast from "react-hot-toast";
+import Loader from "./Loader";
+
 const SignUpPage = () => {
+
+  const context = useContext(myContext);
+  const {Loading, setLoading} = context;
+
+  const navigate = useNavigate();
+  const [userSignup, setUserSignup] = useState({
+    name:"",
+    email:"",
+    password:"",
+    role:"user",
+  });
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const navigate = useNavigate();
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -80,7 +94,6 @@ const SignUpPage = () => {
       alert("not a valid user");
     }
   } 
-
   return (
     <>
       <div className="sm:shadow-md sm:bg-gray-50 text-gray-600 rounded-lg px-10 py-10 my-16 mx-auto w-[460px] min-h-[500px]">

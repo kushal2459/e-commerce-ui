@@ -1,1 +1,694 @@
 https://www.figma.com/file/1RStrWePpoZK7izrFLdzKL/Ecommerce?type=design&node-id=0-1&mode=design&t=iwLUbvrrsTJHDMRi-0
+
+
+E Commerce Api Document
+
+User API
+ User Profile 
+Create User API 
+Get User Detail API
+Delete User Detail API
+Update User Profile API
+Update User Profile Photo API
+Request Email Verification OTP API
+Verify Email Verification OTP API
+Authentication
+Email Login API
+Logout API
+Request Password Reset API
+Verify OTP Password Reset API
+Reset Password API
+Request Email Verification OTP API
+Verify Email Verification OTP API
+Product Api
+Get List of Product Api
+Get List of Product Detail Api
+Filter Product List Api
+Order Api
+Create Order Api
+Get Order list Api
+Payment Api
+Get Order detail Api
+Create Address Api
+Delete Address Api
+Get List of Address ApiOrder Api
+Create Order Api
+Get Order list Api
+Payment Api
+Get Order detail Api
+
+
+Cart Api
+Add Product into cart
+Delete Product into cart
+Wishlist Api
+Add product into Wishlist
+Delete product into Wishlist
+Review Api
+Add Review Api
+Add Rating Api
+
+ 
+Admin API
+
+ Product Api
+Add Product Api
+Update Product Api
+Add Stock for APi
+Order Api
+Get List for Orders
+Update Order Delivery Status
+Discount Api
+Add Discounts
+Update Dis
+
+API Description
+Product Api
+Add Product Api
+Request URL : ‘/product’
+Request Method : POST
+Request Headers: { 
+Content-Type : ‘application/json’,
+			Authorization: ‘Bearer<Token String>’	
+ }
+Request Body: {
+  	“productTitle”: “<String>” , 
+ 	“productVersion” : “<String>”, 
+ 	“productDescription”:”<String>” ,
+ 	“skuCode”: “<String>”,
+ 	“hsnCode”:”<String>”,
+ 	“barCode”: “<String>”, 
+ 	“images”:”<Seq<String>>” ,
+ 	“stock”:”<Long>”,
+ 	“price_without_gst”:”<Double>”,
+ 	“gst”:”<Double>”,
+“specification”:”<JsonObject>”,
+“overview”:”<JsonObject>”,
+“primaryImage”:”<JsonObject>”,
+“qty”:”<Int>”,
+“discounts”:”<Nullable<List<Discount>>>”,
+       } 
+Success Response: { 
+status: 200,
+Message:‘success’
+body: { 
+      response: 
+[
+     {
+	“id”:”<Long>”,
+“productTitle”: “<String>” , 
+ 			“productVersion” : “<String>”, 
+ 			“productDescription”:”<String>” ,
+ 			“skuCode”: “<String>”,
+ 			“hsnCode”:”<String>”,
+ 			“barCode”: “<String>”, 
+ 			“images”:”<Seq<String>>” ,
+ 			“stock”:”<Long>”,
+ 			“price_without_gst”:”<Double>”,
+ 			“gst”:”<Double>”,
+“specification”:”<JsonObject>”,
+“overview”:”<JsonObject>”,
+“primaryImage”:”<JsonObject>”,
+“qty”:”<Int>”,
+“discounts”:”<Nullable<List<Discount>>>”,
+      }
+]
+ } 
+}
+Get List of Product Api
+Request URL : ‘/products’
+Request Method : GET
+Request Headers: { 
+	Content-Type : ‘application/json’,’	
+ }
+Request Body: {
+“productTitle”: “<String>” , 
+“productVersion” : “<String>”, 
+“productDescription”:”<String>” ,
+“skuCode”: “<String>”,
+“hsnCode”:”<String>”,
+ 	“barCode”: “<String>”, 
+ 	“images”:”<Seq<String>>” ,
+ 	“stock”:”<Long>”,
+ 	“price_without_gst”:”<Double>”,
+ 	“gst”:”<Double>”,
+“specification”:”<JsonObject>”,
+“overview”:”<JsonObject>”,
+“primaryImage”:”<JsonObject>”,
+“qty”:”<Int>”,
+“discounts”:”<Nullable<List<Discount>>>”,
+       }
+Success Response: { 
+status: 200, 
+Message:‘success’,
+body: { 
+     response: [
+     	   {
+		“id”:”<Long>”,
+“productTitle”: “<String>” , 
+ 		“productVersion” : “<String>”, 
+“productDescription”:”<String>” ,
+“skuCode”: “<String>”,
+“hsnCode”:”<String>”,
+“barCode”: “<String>”, 
+“images”:”<Seq<String>>” ,
+“stock”:”<Long>”,
+“price_without_gst”:”<Double>”,
+“gst”:”<Double>”,
+“specification”:”<JsonObject>”,
+“overview”:”<JsonObject>”,
+“primaryImage”:”<JsonObject>”,
+“qty”:”<Int>”,
+“discounts”:”<Nullable<List<Discount>>>”,
+},
+{
+		“id”:”<Long>”,
+“productTitle”: “<String>” , 
+ 		“productVersion” : “<String>”, 
+“productDescription”:”<String>” ,
+“skuCode”: “<String>”,
+“hsnCode”:”<String>”,
+“barCode”: “<String>”, 
+“images”:”<Seq<String>>” ,
+“stock”:”<Long>”,
+“price_without_gst”:”<Double>”,
+“gst”:”<Double>”,
+“specification”:”<JsonObject>”,
+“overview”:”<JsonObject>”,
+“primaryImage”:”<JsonObject>”,
+“qty”:”<Int>”,
+“discounts”:”<Nullable<List<Discount>>>”,
+}....
+     ]
+} 
+}
+.
+Get Product Detail
+Request URL : ‘/product/:productId’
+Request Headers: { 
+Content-Type : ‘application/json’,	
+ }
+Request Method : GET
+Success Response: { 
+status: 200, 
+Message:‘success’,
+body: { 
+     response: 
+     	   {
+		“id”:”<Long>”,
+“productTitle”: “<String>” , 
+ 		“productVersion” : “<String>”, 
+“productDescription”:”<String>” ,
+“skuCode”: “<String>”,
+“hsnCode”:”<String>”,
+“barCode”: “<String>”, 
+“images”:”<Seq<String>>” ,
+“stock”:”<Long>”,
+“price_without_gst”:”<Double>”,
+“gst”:”<Double>”,
+“specification”:”<JsonObject>”,
+“overview”:”<JsonObject>”,
+“primaryImage”:”<JsonObject>”,
+“qty”:”<Int>”,
+“discounts”:”<Nullable<List<Discount>>>”,
+} 
+} 
+}
+Add Discount Detail
+Request URL : ‘/discount’
+Request Method : POST
+Request Headers: { 
+Content-Type : ‘application/json’,
+	Authorization: ‘Bearer<Token String>’	
+ }
+Request Body: {
+“productId”: “<Nullable<Long>>” , 
+“discountPrice” : “<Double>”, 
+“discountPerc”:”<Double>” ,
+“rule”: “<String>”,
+“expireDay”:”<Int>”,
+ 	“condition”: “<String>”, 
+ 	“expireDate”:”<milliseconds>”,
+“couponCode”:”<String>” 
+ }
+Success Response: { 
+status: 200, 
+Message:‘success’,
+body: { 
+     response: [
+     	   {
+		“id”:”<Long>”,
+“productId”: “<Nullable<Long>>” , 
+“discountPrice” : “<Double>”, 
+“discountPerc”:”<Double>” ,
+“rule”: “<String>”,
+“expireDay”:”<Int>”,
+ 		“condition”: “<String>”, 
+ 		“expireDate”:”<milliseconds>”,
+“couponCode”:”<String>”
+},
+     ]
+ } 
+}
+Get List Discount Detail
+Request URL : ‘/discount’
+Request Method : GET
+Request Headers: { 
+	Content-Type : ‘application/json’,’	
+ }
+
+
+Success Response: { 
+status: 200, 
+Message:‘success’,
+body: { 
+     response: [
+     	   {
+		“id”:”<Long>”,
+“productId”: “<Nullable<Long>>” , 
+“discountPrice” : “<Double>”, 
+“discountPerc”:”<Double>” ,
+“rule”: “<String>”,
+“expireDay”:”<Int>”,
+ 		“condition”: “<String>”, 
+ 		“expireDate”:”<milliseconds>”,
+“couponCode”:”<String>”
+},
+     ]
+ } 
+}
+Order Api
+Create Order Api
+Request URL : ‘/product’
+Request Method : POST
+Request Headers: { 
+Content-Type : ‘application/json’,Authorization: ‘Bearer<TokenString>’
+ }
+Request Body: {
+  				“id”: “” , 
+ 				“orderNumber” : “”, 
+ 				“paymentId”:”<String>” ,
+ 				“userId”: “<String><default null>”,
+ 				“orderStatus”:”<Double><default 0.0>”,
+ 		“trackingId”: “<Double>”, 
+ 				“estDeliverDate”:”<Double>” ,
+ 				 “actDeliverDate”:”<String>”,
+ 				 “trackingStatus”:”<String>”,
+ 				 “gstin”:”<Nullable<Double>>”,
+“totalAmount ”:”<JsonObject>”,
+“deliveryDetail”:”<JsonObject>”,
+“currency”:”<JsonObject>”,
+“shippingCost”:”<Double>”,
+“otherCost”:”<Double>”,
+“billToAddress”:<Address>,
+“shipToAddress”:<Address>,
+“discounts”:”<Nullable<List<Discount>>>”,
+“products”:”<List<Product>>”
+“payment”:”<Nullable<List<PaymentPayload>>>”
+      			 } 
+Success Response: 
+  { 
+      status: 200,
+ 				      Message:‘success’
+      body: { 
+     		     response: 
+[
+     		   {
+		“id”:”id”,
+“user_id”: “<Long>” , 
+ 				“order_id” : “<Long>”, 
+ 				“total_amount”:”<Double>” ,
+ 				“currency_type”: “<String>”,
+ 				“razorpay_order_id”:”<String>”,
+ 				“razorpay_payment_id”: “<String>”, 
+ 				“razorpay_signature”:”<String>” ,
+ 				“reason”:”<String>”,
+ 				“attempt”:”<Int>”,
+ 				“status”:”<String>”,
+“payment_date”:”<millisecond>”,
+“payment_method”:”<String>”,
+“payment_id”:”<String>”,
+“payment_note”:”<String>”,
+“payment_meta”:”<JsValue>”,
+    	   }
+]
+ } 
+
+Success Response: 
+  { 
+      status: 500,
+ 				      Message:‘success’
+      body: { 
+     	         error: 
+                                                             [
+                  {
+	        Message: “Order has confirmed order number: {order_number} , please reinitiate Payment”
+    	   }
+]
+ } 
+Initiate Payment
+Request URL : ‘/initpayment/:ordernumber’
+Request Method : GET
+Request Headers: { 
+   Content-Type : ‘application/json’,Authorization:    ‘Bearer<TokenString>’
+ }
+Success Response: 
+  { 
+      status: 200,
+ 				      Message:‘success’
+      body: { 
+     		     response: 
+[
+     		   {
+		“id”:”id”,
+“user_id”: “<Long>” , 
+ 				“order_id” : “<Long>”, 
+ 				“total_amount”:”<Double>” ,
+ 				“currency_type”: “<String>”,
+ 				“razorpay_order_id”:”<String>”,
+ 				“razorpay_payment_id”: “<String>”, 
+ 				“razorpay_signature”:”<String>” ,
+ 				“reason”:”<String>”,
+ 				“attempt”:”<Int>”,
+ 				“status”:”<String>”,
+“payment_date”:”<millisecond>”,
+“payment_method”:”<String>”,
+“payment_id”:”<String>”,
+“payment_note”:”<String>”,
+“payment_meta”:”<JsValue>”,
+    	   }
+]
+}
+End Payment transaction 
+Request URL : ‘/endtransation/:status
+Request Method : POST
+Request Headers: { 
+Content-Type : ‘application/json’,Authorization: ‘Bearer<TokenString>’
+ }
+Request Body: {
+  				“id”: “<Long>” , 
+ 				“user_id” : “<Long>”, 
+ 				“order_id”:”<Long>” ,
+ 				“total_amount”: “<Double>”,
+ 				“currency_type”:”<String>”,
+ 		“razorpay_order_id”: “<String>”, 
+ 				“razorpay_payment_id”:”<String>” ,
+ 				 “razorpay_signature”:”<String>”,
+ 				 “reason”:”<String>”,
+ 				 “attempt”:”<Nullable<Double>>”,
+ “status ”:”<String>”,
+ “payment_date”:”<Nullable<Time Millisecond>>”,
+ “payment_method”:”<String>”,
+ “payment_id”:”<String>”,
+ “payment_note”:”<String>”,
+ “payment_meta”:<JsonValue>,
+      			 } 
+Success Response: 
+  { 
+      status: 200,
+ 				      Message:‘success’
+      body: { 
+     		     response: 
+[
+     		   {
+		“id”: “” , 
+ 				“orderNumber” : “”, 
+ 				“paymentId”:”<String>” ,
+ 				“userId”: “<String><default null>”,
+ 				“orderStatus”:”<Double><default 0.0>”,
+ 		“trackingId”: “<Double>”, 
+ 				“estDeliverDate”:”<Double>” ,
+ 				 “actDeliverDate”:”<String>”,
+ 				 “trackingStatus”:”<String>”,
+ 				 “gstin”:”<Nullable<Double>>”,
+“totalAmount ”:”<JsonObject>”,
+“deliveryDetail”:”<JsonObject>”,
+“currency”:”<JsonObject>”,
+“shippingCost”:”<Double>”,
+“otherCost”:”<Double>”,
+“billToAddress”:<Address>,
+“shipToAddress”:<Address>,
+“discounts”:”<Nullable<List<Discount>>>”,
+“products”:”<List<Product>>”
+“payment”:”<Nullable<List<PaymentPayload>>>”
+    	   }
+]
+ } 
+Cart API
+Add Product into Cart 
+Request URL : ‘/cart
+Request Method : POST
+Request Headers: { 
+Content-Type : ‘application/json’,Authorization: ‘Bearer<TokenString>’
+ }
+Request Body:[ {
+“productTitle”: “<String>” , 
+“productVersion” : “<String>”, 
+“productDescription”:”<String>” ,
+“skuCode”: “<String>”,
+“hsnCode”:”<String>”,
+ 		“barCode”: “<String>”, 
+ 		“images”:”<Seq<String>>” ,
+ 		“stock”:”<Long>”,
+ 		“price_without_gst”:”<Double>”,
+ 		“gst”:”<Double>”,
+“specification”:”<JsonObject>”,
+“overview”:”<JsonObject>”,
+“primaryImage”:”<JsonObject>”,
+“qty”:”<Int>”,
+“discounts”:”<Nullable<List<Discount>>>”,
+       },
+	{
+“productTitle”: “<String>” , 
+“productVersion” : “<String>”, 
+“productDescription”:”<String>” ,
+“skuCode”: “<String>”,
+“hsnCode”:”<String>”,
+ 		“barCode”: “<String>”, 
+ 		“images”:”<Seq<String>>” ,
+ 		“stock”:”<Long>”,
+ 		“price_without_gst”:”<Double>”,
+ 		“gst”:”<Double>”,
+“specification”:”<JsonObject>”,
+“overview”:”<JsonObject>”,
+“primaryImage”:”<JsonObject>”,
+“qty”:”<Int>”,
+“discounts”:”<Nullable<List<Discount>>>”,
+       }
+	
+]
+Success Response: 
+  { 
+      status: 200,
+ 				      Message:‘success’
+      body: { 
+     		     response: 
+[ {
+“productTitle”: “<String>” , 
+“productVersion” : “<String>”, 
+“productDescription”:”<String>” ,
+“skuCode”: “<String>”,
+“hsnCode”:”<String>”,
+ 		“barCode”: “<String>”, 
+ 		“images”:”<Seq<String>>” ,
+ 		“stock”:”<Long>”,
+ 		“price_without_gst”:”<Double>”,
+ 		“gst”:”<Double>”,
+“specification”:”<JsonObject>”,
+“overview”:”<JsonObject>”,
+“primaryImage”:”<JsonObject>”,
+“qty”:”<Int>”,
+“discounts”:”<Nullable<List<Discount>>>”,
+       },
+	{
+“productTitle”: “<String>” , 
+“productVersion” : “<String>”, 
+“productDescription”:”<String>” ,
+“skuCode”: “<String>”,
+“hsnCode”:”<String>”,
+ 		“barCode”: “<String>”, 
+ 		“images”:”<Seq<String>>” ,
+ 		“stock”:”<Long>”,
+ 		“price_without_gst”:”<Double>”,
+ 		“gst”:”<Double>”,
+“specification”:”<JsonObject>”,
+“overview”:”<JsonObject>”,
+“primaryImage”:”<JsonObject>”,
+“qty”:”<Int>”,
+“discounts”:”<Nullable<List<Discount>>>”,
+       }
+	
+] }
+}
+Delete Product into Cart 
+ Request URL : ‘/cart/:productId
+Request Method : DELETE
+Request Headers: { 
+Content-Type : ‘application/json’,Authorization: ‘Bearer<TokenString>’
+ }
+Success Response: 
+  { 
+      status: 200,
+ 				      Message:‘success’
+      body: { 
+     		     response: 
+[ {
+“productTitle”: “<String>” , 
+“productVersion” : “<String>”, 
+“productDescription”:”<String>” ,
+“skuCode”: “<String>”,
+“hsnCode”:”<String>”,
+ 			“barCode”: “<String>”, 
+ 			“images”:”<Seq<String>>” ,
+ 			“stock”:”<Long>”,
+ 			“price_without_gst”:”<Double>”,
+ 			“gst”:”<Double>”,
+“specification”:”<JsonObject>”,
+“overview”:”<JsonObject>”,
+“primaryImage”:”<JsonObject>”,
+“qty”:”<Int>”,
+“discounts”:”<Nullable<List<Discount>>>”,
+       		},
+		{
+“productTitle”: “<String>” , 
+“productVersion” : “<String>”, 
+“productDescription”:”<String>” ,
+“skuCode”: “<String>”,
+“hsnCode”:”<String>”,
+ 			“barCode”: “<String>”, 
+ 			“images”:”<Seq<String>>” ,
+ 			“stock”:”<Long>”,
+ 			“price_without_gst”:”<Double>”,
+ 			“gst”:”<Double>”,
+“specification”:”<JsonObject>”,
+“overview”:”<JsonObject>”,
+“primaryImage”:”<JsonObject>”,
+“qty”:”<Int>”,
+“discounts”:”<Nullable<List<Discount>>>”,
+       		}
+	
+] }
+}
+GET Cart 
+ Request URL : ‘/cart/
+Request Method : GET
+Request Headers: { 
+Content-Type : ‘application/json’,Authorization: ‘Bearer<TokenString>’
+ }
+Success Response: 
+  { 
+      status: 200,
+ 				      Message:‘success’
+      body: { 
+     		     response: 
+[ {
+“productTitle”: “<String>” , 
+“productVersion” : “<String>”, 
+“productDescription”:”<String>” ,
+“skuCode”: “<String>”,
+“hsnCode”:”<String>”,
+ 			“barCode”: “<String>”, 
+ 			“images”:”<Seq<String>>” ,
+ 			“stock”:”<Long>”,
+ 			“price_without_gst”:”<Double>”,
+ 			“gst”:”<Double>”,
+“specification”:”<JsonObject>”,
+“overview”:”<JsonObject>”,
+“primaryImage”:”<JsonObject>”,
+“qty”:”<Int>”,
+“discounts”:”<Nullable<List<Discount>>>”,
+       		},
+		{
+“productTitle”: “<String>” , 
+“productVersion” : “<String>”, 
+“productDescription”:”<String>” ,
+“skuCode”: “<String>”,
+“hsnCode”:”<String>”,
+ 			“barCode”: “<String>”, 
+ 			“images”:”<Seq<String>>” ,
+ 			“stock”:”<Long>”,
+ 			“price_without_gst”:”<Double>”,
+ 			“gst”:”<Double>”,
+“specification”:”<JsonObject>”,
+“overview”:”<JsonObject>”,
+“primaryImage”:”<JsonObject>”,
+“qty”:”<Int>”,
+“discounts”:”<Nullable<List<Discount>>>”,
+       		}
+	
+] }
+}
+Review API
+Add Review
+Request URL : ‘/review/
+Request Method : POST
+Request Headers: { 
+Content-Type : ‘application/json’,Authorization: ‘Bearer<TokenString>’
+ }
+Request Body: {
+“productId”: “<Long>” , 
+“comment” : “<String>”, 
+“rating”:”<String>” ,
+“userName”: “<String>”,
+“createdAt”:”<Time Millisecond>”,
+ 		“updatedAt”: “<Time Millisecond>”, 
+ 		“images”:”<Nullable<Seq<String>>>” ,,
+       }
+Success Response: 
+  { 
+      status: 200,
+ 				      Message:‘success’
+      body: { 
+     		     response: {
+“productId”: “<Long>” , 
+“comment” : “<String>”, 
+“rating”:”<String>” ,
+“userName”: “<String>”,
+“createdAt”:”<Time Millisecond>”,
+ 			“updatedAt”: “<Time Millisecond>”, 
+ 			“images”:”<Nullable<Seq<String>>>” ,,
+       		}
+}
+
+}
+Get Review
+Request URL : ‘/review/:productid
+Request Method : GET
+Request Headers: { 
+Content-Type : ‘application/json’,Authorization: ‘Bearer<TokenString>’
+ }
+Success Response: 
+  { 
+      status: 200,
+ 				      Message:‘success’
+      body: { 
+     		     response: [{
+“productId”: “<Long>” , 
+“comment” : “<String>”, 
+“rating”:”<String>” ,
+“userName”: “<String>”,
+“createdAt”:”<Time Millisecond>”,
+ 			“updatedAt”: “<Time Millisecond>”, 
+ 			“images”:”<Nullable<Seq<String>>>” ,,
+       		},
+		{
+  “productId”: “<Long>” , 
+ “comment” : “<String>”, 
+ “rating”:”<String>” ,
+ “userName”: “<String>”,
+ “createdAt”:”<Time Millisecond>”,
+ 			 “updatedAt”: “<Time Millisecond>”, 
+ 			 “images”:”<Nullable<Seq<String>>>” ,,
+       		}..			
+]
+}
+
+}
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+
+
+  
